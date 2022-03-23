@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="nexus" />
+      <option name="name" value="nexus" />
+      <option name="url" value="http://nexus.sefnet.rj/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="prime-repo" />
+      <option name="name" value="prime-repo" />
+      <option name="url" value="http://10.8.92.245:8081/artifactory/prime-repo/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="sati-repo" />
+      <option name="name" value="sati-repo" />
+      <option name="url" value="http://10.8.92.245:8081/artifactory/SATI-PUBLICO" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="framework" />
+      <option name="name" value="framework" />
+      <option name="url" value="http://10.8.92.245:8081/artifactory/SATI-Sefazwork/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="thirdparty" />
+      <option name="name" value="thirdparty" />
+      <option name="url" value="http://nexus.sefnet.rj/nexus/content/repositories/thirdparty/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss-eap-repository" />
+      <option name="name" value="jboss-eap-repository" />
+      <option name="url" value="file:///path/to/repo/jboss-eap-7.3.0.GA-maven-repository/maven-repository" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven-central" />
+      <option name="name" value="maven-central" />
+      <option name="url" value="http://10.8.92.245:8081/artifactory/MavenCentral/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss-community-repository" />
+      <option name="name" value="jboss-community-repository" />
+      <option name="url" value="http://repository.jboss.org/nexus/content/groups/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="releases" />
+      <option name="name" value="releases" />
+      <option name="url" value="http://nexus.sefnet.rj/nexus/content/repositories/releases/" />
+    </remote-repository>
+  </component>
+</project>
