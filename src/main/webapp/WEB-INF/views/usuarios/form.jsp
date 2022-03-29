@@ -28,10 +28,7 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="nav-item"><a href="${s:mvcUrl('PC#listar').build()}">Lista de Produtos</a></li>
-			<li><a href="${s:mvcUrl('PSC#listaPedidos').build() }" rel="nofollow"><fmt:message key="menu.lista_pedidos"/></a></li>
-			<li><a href="${s:mvcUrl('UC#listar').build() }" rel="nofollow"><fmt:message key="menu.lista_usuarios"/></a></li>
-	        <li class="nav-item"><a href="${s:mvcUrl('PC#form').build()}">Cadastro de Produtos</a></li>
+	        <li class="nav-item"><a href="${s:mvcUrl('UC#listar').build()}">Lista de Usuários</a></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 	      	 <li class="nav-item">
@@ -49,38 +46,27 @@
 	</nav>
 
 	<div class="container">
-		<h1>Cadastro de Produto</h1>
-		<form:form action="${s:mvcUrl('PC#gravar').build() }" method="post" commandName="produto" enctype="multipart/form-data">
+		<h1>Cadastro de Usuario</h1>
+		<form:form action="${s:mvcUrl('UC#gravar').build() }" commandName="usuarioForm" method="POST"  enctype="multipart/form-data">
 			<div class="form-group">
-				<label>Título</label>
-				<form:input path="titulo" cssClass="form-control" />
-				<form:errors path="titulo" />
+				<label>Nome</label>
+				<form:input path="nome" cssClass="form-control" />
+				<form:errors path="nome" />
 			</div>
 			<div class="form-group">
-		        <label>Descrição</label>
-				<form:textarea path="descricao" cssClass="form-control" />
-		        <form:errors path="descricao" />
+		        <label>Email</label>
+				<form:input path="email" cssClass="form-control" />
+		        <form:errors path="email" />
 			</div>
 			<div class="form-group">
-				<label>Páginas</label>
-				<form:input path="paginas" cssClass="form-control" />
-		        <form:errors path="paginas" />
+				<label>Senha</label>
+				<form:password path="senha" cssClass="form-control" />
+		        <form:errors path="senha" />
 			</div>
 			<div class="form-group">
-				<label>Data de  Lançamento</label>
-				<form:input path="dataLancamento" cssClass="form-control"/>
-		        <form:errors path="dataLancamento" />
-			</div>
-			<c:forEach items="${tipos}" var="tipoPreco" varStatus="status">
-				<div class="form-group">
-					<label>${tipoPreco}</label>
-					<form:input path="precos[${status.index}].valor" cssClass="form-control"/>
-					<form:hidden path="precos[${status.index}].tipo" value="${tipoPreco}"/>
-				</div>
-			</c:forEach>
-			<div class="form-group">
-			    <label>Sumário</label>
-			    <input name="sumario" type="file" class="form-control"/>
+				<label>Senha Repetida</label>
+				<form:password path="senhaRepetida" cssClass="form-control"/>
+		        <form:errors path="senhaRepetida" />
 			</div>
 			<button type="submit" class="btn btn-primary">Cadastrar</button>
 		</form:form>

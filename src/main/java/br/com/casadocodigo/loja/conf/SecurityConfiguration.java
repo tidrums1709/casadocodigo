@@ -14,8 +14,9 @@ import br.com.casadocodigo.loja.dao.UsuarioDAO;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
+	@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 	@Autowired
-	private UsuarioDAO usuarioDao;
+	private UsuarioDAO usuarioDAO;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -23,7 +24,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/produtos/detalhes/**").permitAll()
 			.antMatchers("/produtos/**").hasRole("ADMIN")
 			.antMatchers("/pedidos/**").hasRole("ADMIN")
-			.antMatchers("/carrinho/**").permitAll()	
+			.antMatchers("/usuarios/**").hasRole("ADMIN")
+			.antMatchers("/carrinho/**").permitAll()
 			.antMatchers("/relatorio-produtos/**").permitAll()
 			.antMatchers("/pagamento/**").permitAll()
 			.antMatchers("/").permitAll()
@@ -39,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(usuarioDao)
+		auth.userDetailsService(usuarioDAO)
 				.passwordEncoder(new BCryptPasswordEncoder());
 	}
 	

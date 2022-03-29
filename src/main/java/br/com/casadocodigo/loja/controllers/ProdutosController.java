@@ -1,9 +1,10 @@
 package br.com.casadocodigo.loja.controllers;
 
-import java.util.List;
-
-import javax.validation.Valid;
-
+import br.com.casadocodigo.loja.dao.ProdutoDAO;
+import br.com.casadocodigo.loja.infra.FileSaver;
+import br.com.casadocodigo.loja.models.Produto;
+import br.com.casadocodigo.loja.models.TipoPreco;
+import br.com.casadocodigo.loja.validation.ProdutoValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Controller;
@@ -17,11 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.casadocodigo.loja.dao.ProdutoDAO;
-import br.com.casadocodigo.loja.infra.FileSaver;
-import br.com.casadocodigo.loja.models.Produto;
-import br.com.casadocodigo.loja.models.TipoPreco;
-import br.com.casadocodigo.loja.validation.ProdutoValidation;
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/produtos")
@@ -59,7 +57,7 @@ public class ProdutosController {
 		
 		dao.gravar(produto);
 		
-		redirectAttributes.addFlashAttribute("message", "Produto cadastrado com sucesso!");
+		redirectAttributes.addFlashAttribute("sucesso", "Produto cadastrado com sucesso!");
 		
 		return new ModelAndView("redirect:/produtos");
 	}
@@ -77,22 +75,8 @@ public class ProdutosController {
 	    ModelAndView modelAndView = new ModelAndView("/produtos/detalhe");
 	    Produto produto = dao.find(id);
 	    
-//	    if(true) throw new RuntimeException("Excessão Genérica Acontecendo!!!!");
-	    
 	    modelAndView.addObject("produto", produto);
 	    return modelAndView;
 	}
-	
-//	@RequestMapping("/{id}")
-//	@ResponseBody
-//	public Produto detalheJson(@PathVariable("id") Integer id){
-//	    Produto produto = dao.find(id);
-//	    return produto;
-//	}
 
-    //tratamente de exceção especifica nesse controlador 
-//	@ExceptionHandler(NoResultException.class)
-//	public String trataDetalheNaoEcontrado(){
-//	    return "error";
-//	}
 }

@@ -34,6 +34,7 @@
 	      <ul class="nav navbar-nav">
 	        <li class="nav-item"><a href="${s:mvcUrl('PC#listar').build()}">Lista de Produtos</a></li>
 			<li><a href="${s:mvcUrl('PSC#listaPedidos').build() }" rel="nofollow"><fmt:message key="menu.lista_pedidos"/></a></li>
+			<li><a href="${s:mvcUrl('UC#listar').build() }" rel="nofollow"><fmt:message key="menu.lista_usuarios"/></a></li>
 	        <li class="nav-item"><a href="${s:mvcUrl('PC#form').build()}">Cadastro de Produtos</a></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
