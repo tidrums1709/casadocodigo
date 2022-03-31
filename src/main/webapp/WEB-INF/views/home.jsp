@@ -21,7 +21,7 @@
 				<li>
 					<a href="${s:mvcUrl('PC#detalhe').arg(0, produto.id).build() }" class="block clearfix">
 					<h2 class="product-title">${produto.titulo }</h2> 
-					<img width="143" height="202" src="https://cdn.shopify.com/s/files/1/0155/7645/products/java8-featured_large.png?v=1411490181" alt="Java 8 Prático" title="Java 8 Prático" /> 
+					<img width="143" height="202" src="https://images-na.ssl-images-amazon.com/images/I/41DB02T8S7L._SY344_BO1,204,203,200_QL70_ML2_.jpg" alt="Java 8 Prático" title="Java 8 Prático" />
 					<small class="buy-button">Compre</small>
 					</a>
 				</li>

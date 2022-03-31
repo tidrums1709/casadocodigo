@@ -3,7 +3,6 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
@@ -53,36 +52,23 @@
 	</nav>
 
 	<div class="container">
-		<h1><a href="${s:mvcUrl('UC#form').build()}">Novo Usuário</a></h1>
-		<h1>Lista de Usuários</h1>
-		<p> ${sucesso} </p>
-		<p> ${falha} </p>
-	
-		<table class="table table-bordered table-striped table-hover">
-			<tr>
-				<th>Nome</th>
-				<th>Email</th>
-				<th>Roles</th>
-				<th>Editar Role</th>
-			</tr>
-			<c:forEach items="${usuarios }" var="usuario">
-				<tr>
-					<td>${usuario.nome }</td>
-					<td>${usuario.email }</td>
-					<td>
-						<c:forEach items="${usuario.roles}" var="role">
-							${role.nome}
-						</c:forEach>
-					</td>
-					<td>
-					<form:form action="/casadocodigo/usuarios/listarRole">
-						<input type="hidden" value="${usuario.email }" name="email"  />
-						<input type="image" src="/casadocodigo/resources/imagens/adicionar.png" />
-					</form:form>
-					</td>
-				</tr>
-			</c:forEach>
-		</table>
+		<h1>Cadastro de Permissões para ${usuario.nome}</h1>
+		<form:form action="${s:mvcUrl('UC#atualizaRoles').build() }" method="post" commandName="usuario" enctype="multipart/form-data">
+
+			<div>
+				<table class="table table-bordered table-striped table-hover">
+					<tr>
+						<th>Permissões:</th>
+
+						<td>
+							<form:checkboxes items="${roles}" itemValue="nome"  path="roles"/>
+						</td>
+					</tr>
+				</table>
+				<input type="hidden" name="id" value="${usuario.id}" />
+				<button type="submit" class="btn btn-primary">Atualizar Roles</button>
+			</div>
+		</form:form>
 	</div>
 </body>
 </html>

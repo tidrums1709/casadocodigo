@@ -4,68 +4,39 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
+@Data
 public class Usuario implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+
 	private String email;
 
 	private String senha;
+
+	@Transient
+	private String senhaRepetida;
 
 	private String nome;
 
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "Usuario_Role",
-		joinColumns = @JoinColumn(name = "email"), 
+		joinColumns = @JoinColumn(name = "id"),
 		inverseJoinColumns = @JoinColumn(name = "role_nome"))
 	private List<Role> roles = new ArrayList<>();
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public List<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

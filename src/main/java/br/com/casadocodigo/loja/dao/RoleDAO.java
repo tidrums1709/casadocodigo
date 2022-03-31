@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.casadocodigo.loja.models.Role;
 
+import java.util.List;
+
 @Repository
 @Transactional
 public class RoleDAO {
@@ -18,4 +20,9 @@ public class RoleDAO {
 	public void gravar(Role role) {
 		manager.persist(role);
 	}
+
+    public List<Role> listRole() {
+		return manager.createQuery("select r from Role r", Role.class)
+				.getResultList();
+    }
 }

@@ -1,16 +1,13 @@
 package br.com.casadocodigo.loja.dao;
 
-import java.util.List;
+import br.com.casadocodigo.loja.models.Usuario;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Repository;
-
-import br.com.casadocodigo.loja.models.Usuario;
-import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 
 @Repository
@@ -42,4 +39,12 @@ public class UsuarioDAO implements UserDetailsService{
 
 	}
 
+
+    public Usuario atualizarRoles(Usuario usuario) {
+		return manager.merge(usuario);
+	}
+
+	public Usuario find(Integer id) {
+		return manager.find(Usuario.class, id);
+	}
 }

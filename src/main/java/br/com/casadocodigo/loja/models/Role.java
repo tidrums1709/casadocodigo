@@ -3,9 +3,11 @@ package br.com.casadocodigo.loja.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
+@Data
 public class Role implements GrantedAuthority{
 
 	private static final long serialVersionUID = 1L;
@@ -20,16 +22,13 @@ public class Role implements GrantedAuthority{
 	  this.nome = nome;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
+	@Override
+	public String getAuthority() {
+		return this.nome;
 	}
 
 	@Override
-	public String getAuthority() {
+	public String toString() {
 		return this.nome;
 	}
 }
